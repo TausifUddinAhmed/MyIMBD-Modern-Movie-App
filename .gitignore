@@ -1,0 +1,44 @@
+# Gradle files
+.gradle/
+build/
+*/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Local configuration file (sdk path, keystore passwords, etc.)
+local.properties
+
+# Log files
+*.log
+
+# Android Studio specific files
+.idea/
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/tasks.xml
+.idea/.name
+.idea/compiler.xml
+.idea/misc.xml
+.idea/encodings.xml
+.idea/vcs.xml
+.idea/dictionaries
+.idea/gradle.xml
+
+# Keystore files (important for signing)
+*.jks
+*.keystore
+
+# External native build folders
+.cxx/
+
+# IntelliJ
+*.iml
+
+# Captures
+captures/
+
+# Misc
+.DS_Store

@@ -1,0 +1,5 @@
+-keep, includedescriptorclasses class java.util.concurrent.** { *; }
+-keep, includedescriptorclasses class java.time.format.** { *; }
+-keepnames class java.util.concurrent.**
+-keepnames class java.time.format.**
+-dontwarn java.lang.invoke.StringConcatFactory
