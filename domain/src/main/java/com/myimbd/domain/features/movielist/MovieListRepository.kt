@@ -13,4 +13,7 @@ interface MovieListRepository {
 
     fun getWishlistedPagedMovies(): Flow<PagingData<Movie>>
 
+    fun getMovieById(movieId: Int): Flow<Movie?>
+
+
 }

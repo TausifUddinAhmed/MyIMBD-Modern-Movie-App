@@ -29,7 +29,8 @@ class MovieDataRepositoryImpl @Inject constructor(
     override fun getWishlistedPagedMovies(): Flow<PagingData<Movie>> =
         localSource.getWishlistedPagedMovies()
 
-
+    override fun getMovieById(movieId: Int): Flow<Movie?> =
+        localSource.getMovieByIdFlow(movieId)
 }
 
 
@@ -53,6 +54,9 @@ interface MovieDataLocalDataSource {
         prefetchDistance: Int = 2,
         enablePlaceholders: Boolean = false
     ): Flow<PagingData<Movie>>
+
+    fun getMovieByIdFlow(movieId: Int): Flow<Movie?>
+
 }
 
 

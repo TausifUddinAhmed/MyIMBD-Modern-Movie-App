@@ -11,5 +11,9 @@ sealed interface Screen : Parcelable {
     @Parcelize
     object WishList : Screen
 
+    @Parcelize
+    class MovieDetail(val movieId: Int) : Screen
+
+
 
 }

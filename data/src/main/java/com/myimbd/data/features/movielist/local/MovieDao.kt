@@ -42,5 +42,9 @@ abstract class MovieDao {
     @Query("SELECT * FROM movies WHERE isWishlisted = 1 ORDER BY year DESC, id ASC")
     abstract fun wishlistedPagingSource(): PagingSource<Int, MovieEntity>
 
+    @Query("SELECT * FROM movies WHERE id = :id LIMIT 1")
+    abstract fun observeById(id: Int): kotlinx.coroutines.flow.Flow<MovieEntity?>
+
+
 }
 

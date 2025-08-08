@@ -68,6 +68,12 @@ class RoomMovieLocalDataSource @Inject constructor(
             .flowOn(dispatchers.io)
 
 
+    override fun getMovieByIdFlow(movieId: Int): Flow<Movie?> =
+        movieDao.observeById(movieId)
+            .map { entity -> entity?.let { mapper.entityToDomain(it) } }
+            .flowOn(dispatchers.io)
+
+
 }
 
 fun RoomDataMapper.entityToDomain(e: MovieEntity): Movie = Movie(

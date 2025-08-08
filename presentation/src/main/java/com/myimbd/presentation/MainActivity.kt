@@ -30,6 +30,7 @@ import com.myimbd.presentation.theme.MyIMDBTheme
 import com.myimbd.presentation.theme.StocksDarkPrimaryText
 import com.myimbd.presentation.theme.StocksDarkSelectedCard
 import com.myimbd.presentation.theme.StocksDarkTopAppBarCollapsed
+import com.myimbd.presentation.ui.movie_details.MovieDetailsScreen
 import com.myimbd.presentation.ui.movielist.MovieListScreen
 import com.myimbd.presentation.ui.splash.SplashScreen
 import com.myimbd.presentation.ui.wishlist.WishlistScreen
@@ -38,6 +39,7 @@ import dev.olshevski.navigation.reimagined.NavBackHandler
 import dev.olshevski.navigation.reimagined.NavHost
 import dev.olshevski.navigation.reimagined.hilt.hiltViewModel
 import dev.olshevski.navigation.reimagined.navigate
+import dev.olshevski.navigation.reimagined.pop
 import dev.olshevski.navigation.reimagined.popAll
 import dev.olshevski.navigation.reimagined.rememberNavController
 
@@ -116,14 +118,21 @@ fun MainApp(
             SharedElementsRoot {
                 NavHost(controller = navController) { route ->
                     when (route) {
-                        is Screen.MovieList -> MovieListScreen (hiltViewModel())
+                        is Screen.MovieList -> MovieListScreen(
+                            viewModel = hiltViewModel(),
+                            onMovieClick = { movie ->
+                                navController.navigate(Screen.MovieDetail(movie.id))
+                            }
+                        )
                         is Screen.WishList -> WishlistScreen(hiltViewModel())
-                       // is Screen.MovieDetails -> CoinDetailScreen(route.coinDetailMainData, navController)
-                       // is Screen.MovieDetails -> MovieListScreen(hiltViewModel())
+                        is Screen.MovieDetail -> MovieDetailsScreen(
+                            movieId = route.movieId,
+                            viewModel = hiltViewModel(),
+                            onBack = { navController.pop() }
+                        )
                     }
                 }
             }
-        }
-    }
+        }    }
 
 }
