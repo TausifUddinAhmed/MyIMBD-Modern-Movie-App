@@ -45,6 +45,29 @@ class RoomMovieLocalDataSource @Inject constructor(
         val entities = mapper.domainToEntities(movies)
         movieDao.refreshMovies(entities) // transaction: deleteAll + insert
     }
+
+
+    override suspend fun setWishListed(movieId: Int, wishListed: Boolean) = withContext(dispatchers.io) {
+        movieDao.setWishListed(movieId, wishListed)
+    }
+
+    override fun getWishlistedPagedMovies(
+        pageSize: Int,
+        prefetchDistance: Int,
+        enablePlaceholders: Boolean
+    ): Flow<PagingData<Movie>> =
+        Pager(
+            config = PagingConfig(
+                pageSize = pageSize,
+                prefetchDistance = prefetchDistance,
+                enablePlaceholders = enablePlaceholders
+            ),
+            pagingSourceFactory = { movieDao.wishlistedPagingSource() }
+        ).flow
+            .map { paging -> paging.map { entity -> mapper.entityToDomain(entity) } }
+            .flowOn(dispatchers.io)
+
+
 }
 
 fun RoomDataMapper.entityToDomain(e: MovieEntity): Movie = Movie(
@@ -56,5 +79,6 @@ fun RoomDataMapper.entityToDomain(e: MovieEntity): Movie = Movie(
     director = e.director,
     actors = e.actors,
     plot = e.plot,
-    posterUrl = e.posterUrl
+    posterUrl = e.posterUrl,
+    isWishListed = e.isWishListed
 )

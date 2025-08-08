@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 5,
-    "identityHash": "3c0ab4831f6447eb39f62c320cd6d6a0",
+    "identityHash": "da0a6799766e7616987e6b128b75eefb",
     "entities": [
       {
         "tableName": "movies",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`sortedPosition` INTEGER NOT NULL, `id` INTEGER NOT NULL, `title` TEXT NOT NULL, `year` INTEGER NOT NULL, `runtime` TEXT NOT NULL, `genres` TEXT NOT NULL, `director` TEXT NOT NULL, `actors` TEXT NOT NULL, `plot` TEXT NOT NULL, `posterUrl` TEXT NOT NULL, PRIMARY KEY(`sortedPosition`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`sortedPosition` INTEGER NOT NULL, `id` INTEGER NOT NULL, `title` TEXT NOT NULL, `year` INTEGER NOT NULL, `runtime` TEXT NOT NULL, `genres` TEXT NOT NULL, `director` TEXT NOT NULL, `actors` TEXT NOT NULL, `plot` TEXT NOT NULL, `posterUrl` TEXT NOT NULL, `isWishListed` INTEGER NOT NULL, PRIMARY KEY(`sortedPosition`))",
         "fields": [
           {
             "fieldPath": "sortedPosition",
@@ -67,6 +67,12 @@
             "columnName": "posterUrl",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "isWishListed",
+            "columnName": "isWishListed",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -92,7 +98,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3c0ab4831f6447eb39f62c320cd6d6a0')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'da0a6799766e7616987e6b128b75eefb')"
     ]
   }
 }

@@ -1,4 +1,4 @@
-package com.myimbd.presentation.ui.movielist
+package com.myimbd.presentation.ui.wishlist
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -26,35 +26,36 @@ import com.myimbd.domain.models.Movie
 import dev.olshevski.navigation.reimagined.hilt.hiltViewModel
 
 @Composable
-fun MovieListScreen(
-    viewModel: MovieListViewModel = hiltViewModel(),
-    onMovieClick: (Movie) -> Unit = {},
+fun WishlistScreen(
+    viewModel: WishlistViewModel = hiltViewModel(),
+    onMovieClick: (Movie) -> Unit = {}
 ) {
-    val movies = viewModel.movies.collectAsLazyPagingItems()
-    MovieListContent(
-        movies = movies,
+    val items = viewModel.wishlist.collectAsLazyPagingItems()
+    WishlistContent(
+        movies = items,
         onMovieClick = onMovieClick,
-        onWishlistClick = viewModel::onWishlistClick
+        onWishlistToggle = viewModel::onWishlistClick
     )
 }
 
 @Composable
-private fun MovieListContent(
+private fun WishlistContent(
     movies: LazyPagingItems<Movie>,
     onMovieClick: (Movie) -> Unit,
-    onWishlistClick: (Movie) -> Unit
+    onWishlistToggle: (Movie) -> Unit
 ) {
     Scaffold { padding ->
         val listState = rememberLazyListState()
 
-        // Handle initial load states first to avoid showing list + full-screen loader together
+        // Handle initial load first
         when (val refresh = movies.loadState.refresh) {
             is LoadState.Loading -> {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(padding),
-                    contentAlignment = Alignment.Center
+                        .padding(padding)
+                        .padding(top = 32.dp),
+                        contentAlignment = Alignment.Center
                 ) { CircularProgressIndicator() }
                 return@Scaffold
             }
@@ -66,16 +67,29 @@ private fun MovieListContent(
                     contentAlignment = Alignment.Center
                 ) {
                     ErrorRow(
-                        message = refresh.error.message ?: "Failed to load movies",
+                        message = refresh.error.message ?: "Failed to load wishlist",
                         onRetry = { movies.retry() }
                     )
                 }
                 return@Scaffold
             }
-            else -> Unit
+            is LoadState.NotLoading -> {
+                // Empty state for wishlist
+                if (movies.itemCount == 0) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(padding),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text("Your wishlist is empty")
+                    }
+                    return@Scaffold
+                }
+            }
         }
 
-        // Normal list content
+        // Normal list
         LazyColumn(
             state = listState,
             modifier = Modifier
@@ -85,21 +99,21 @@ private fun MovieListContent(
             items(
                 count = movies.itemCount,
                 key = movies.itemKey { it.id },
-                contentType = { "movie_row" }
+                contentType = { "wishlist_row" }
             ) { index ->
-                val item = movies[index]
-                if (item == null) {
+                val movie = movies[index]
+                if (movie == null) {
                     MovieRowPlaceholder()
                 } else {
-                    MovieRow(
-                        movie = item,
-                        onClick = { onMovieClick(item) },
-                        onWishlistClick = { onWishlistClick(item) }
+                    WishlistRow(
+                        movie = movie,
+                        onClick = { onMovieClick(movie) },
+                        onWishlistToggle = { onWishlistToggle(movie) }
                     )
                 }
             }
 
-            // Append/footer states
+            // Footer (append)
             when (val append = movies.loadState.append) {
                 is LoadState.Loading -> item { ListLoading() }
                 is LoadState.Error -> item {
@@ -115,10 +129,10 @@ private fun MovieListContent(
 }
 
 @Composable
-private fun MovieRow(
+private fun WishlistRow(
     movie: Movie,
     onClick: () -> Unit,
-    onWishlistClick: () -> Unit
+    onWishlistToggle: () -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -170,7 +184,8 @@ private fun MovieRow(
             )
         }
 
-        IconButton(onClick = onWishlistClick) {
+        // Toggle heart
+        IconButton(onClick = onWishlistToggle) {
             val icon = if (movie.isWishListed) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder
             val desc = if (movie.isWishListed) "Remove from wishlist" else "Add to wishlist"
             Icon(imageVector = icon, contentDescription = desc)
@@ -180,7 +195,6 @@ private fun MovieRow(
 
 @Composable
 private fun MovieRowPlaceholder() {
-    // Lightweight placeholder without extra deps
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -228,10 +242,7 @@ private fun ListLoading() {
 }
 
 @Composable
-private fun ErrorRow(
-    message: String,
-    onRetry: () -> Unit
-) {
+private fun ErrorRow(message: String, onRetry: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()

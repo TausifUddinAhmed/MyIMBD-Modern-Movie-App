@@ -30,5 +30,17 @@ abstract class MovieDao {
         deleteAllMovies()
         insertMovies(movies)
     }
+
+    //  set or toggle
+    @Query("UPDATE movies SET isWishListed = :wishListed WHERE id = :id")
+    abstract suspend fun setWishListed(id: Int, wishListed: Boolean)
+
+    //  toggle version if you want it
+    @Query("UPDATE movies SET isWishListed = CASE WHEN isWishListed = 1 THEN 0 ELSE 1 END WHERE id = :id")
+    abstract suspend fun toggleWishListed(id: Int)
+
+    @Query("SELECT * FROM movies WHERE isWishlisted = 1 ORDER BY year DESC, id ASC")
+    abstract fun wishlistedPagingSource(): PagingSource<Int, MovieEntity>
+
 }
 

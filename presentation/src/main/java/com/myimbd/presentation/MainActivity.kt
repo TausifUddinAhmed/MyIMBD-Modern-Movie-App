@@ -32,6 +32,7 @@ import com.myimbd.presentation.theme.StocksDarkSelectedCard
 import com.myimbd.presentation.theme.StocksDarkTopAppBarCollapsed
 import com.myimbd.presentation.ui.movielist.MovieListScreen
 import com.myimbd.presentation.ui.splash.SplashScreen
+import com.myimbd.presentation.ui.wishlist.WishlistScreen
 import dagger.hilt.android.AndroidEntryPoint
 import dev.olshevski.navigation.reimagined.NavBackHandler
 import dev.olshevski.navigation.reimagined.NavHost
@@ -116,7 +117,7 @@ fun MainApp(
                 NavHost(controller = navController) { route ->
                     when (route) {
                         is Screen.MovieList -> MovieListScreen (hiltViewModel())
-                        is Screen.WishList -> MovieListScreen(hiltViewModel())
+                        is Screen.WishList -> WishlistScreen(hiltViewModel())
                        // is Screen.MovieDetails -> CoinDetailScreen(route.coinDetailMainData, navController)
                        // is Screen.MovieDetails -> MovieListScreen(hiltViewModel())
                     }

@@ -38,7 +38,8 @@ class RoomDataMapper @Inject constructor(
                 director = e.director,
                 actors = e.actors,
                 plot = e.plot,
-                posterUrl = e.posterUrl
+                posterUrl = e.posterUrl,
+                isWishListed = e.isWishListed
             )
         }
 

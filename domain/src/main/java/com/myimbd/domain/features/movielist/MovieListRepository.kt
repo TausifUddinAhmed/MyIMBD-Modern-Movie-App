@@ -9,5 +9,8 @@ interface MovieListRepository {
     suspend fun getDataFromRemote(): Result<List<Movie>>
     fun getPagedMovies(): Flow<PagingData<Movie>>
 
+    suspend fun setWishListed(movieId: Int, wishListed: Boolean)
+
+    fun getWishlistedPagedMovies(): Flow<PagingData<Movie>>
 
 }

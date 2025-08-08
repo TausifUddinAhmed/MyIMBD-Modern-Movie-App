@@ -19,7 +19,8 @@ class MovieDataMapper @Inject constructor(
                 director = dto.director,
                 actors = dto.actors,
                 plot = dto.plot,
-                posterUrl = dto.posterUrl
+                posterUrl = dto.posterUrl,
+                isWishListed = false
             )
         }
     }

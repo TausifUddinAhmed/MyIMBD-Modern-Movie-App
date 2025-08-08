@@ -18,5 +18,7 @@ data class MovieEntity(
     val director: String,
     val actors: String,
     val plot: String,
-    val posterUrl: String
+    val posterUrl: String,
+    val isWishListed: Boolean = false // ← NEW
+
 )
