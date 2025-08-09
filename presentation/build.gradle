@@ -58,6 +58,7 @@ dependencies {
     // davidepanidev
     implementation "com.github.davidepanidev:android-extensions:$android_extensions_version"
     implementation "com.github.davidepanidev:kotlin-extensions:$kotlin_extensions_version"
+    implementation 'androidx.compose.foundation:foundation:1.8.3'
 
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugar_version"
 
