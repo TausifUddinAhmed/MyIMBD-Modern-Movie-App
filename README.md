@@ -36,7 +36,7 @@ The project follows **Clean Architecture** principles and is organized into the 
 - **Local Database:** Room
 - **Preferences Storage:** DataStore
 - **Architecture:** Multi-module Clean Architecture (app, domain, data, presentation)
-- **Networking:** Retrofit (if applicable in your project)
+- **Networking:** Retrofit 
 - **Paging:** Paging 3 library
 
 ---
@@ -65,27 +65,23 @@ The project follows **Clean Architecture** principles and is organized into the 
 
 ## 📸 Screenshots
 
-|  Splash| Movie List | Movie Details |
-|------------|----------------|---------------|
-| ![Splash](screenshots/splash.png) | ![Movie List](screenshots/movielist.png) | ![Movie Details](screenshots/movie_details.png) |
-
-| Wishlist |
-|----------|
-| ![Wishlist](screenshots/wishlist.png) |
-
-> **Note:** Place your actual screenshots in a `screenshots` folder at the root of the project.
+|  Splash| Movie List | Movie Details | Wishlist |
+|------------|----------------|---------------|----------|
+| ![Splash](screenshots/splash.png) | ![Movie List](screenshots/movielist.png) | ![Movie Details](screenshots/movie_details.png) |![Wishlist](screenshots/wishlist.png) |
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Android Studio Giraffe or newer
+- Latest  Android Studio Narwhal Feature Drop
 - JDK 11 or higher
 - Gradle 8.x
 
 ### Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/MyIMBD.git
-   cd MyIMBD
+   git clone https://github.com/TausifUddinAhmed/MyIMBD-Modern-Movie-App.git
+   cd MyIMBD-Modern-Movie-App
+
+
