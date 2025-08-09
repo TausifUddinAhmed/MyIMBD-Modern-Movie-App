@@ -52,6 +52,7 @@ The project follows **Clean Architecture** principles and is organized into the 
   - Filter movies by genres.  
   - Wishlist icon with badge showing number of items.  
   - Click on a movie item to view details.
+  - Click on the heart icon to the movie item to add to wishlist
 
 - **Movie Details Screen**  
   - Displays detailed information about the selected movie.
@@ -83,6 +84,7 @@ The project follows **Clean Architecture** principles and is organized into the 
    ```bash
    git clone https://github.com/TausifUddinAhmed/MyIMBD-Modern-Movie-App.git
    cd MyIMBD-Modern-Movie-App
+
 
 
 
