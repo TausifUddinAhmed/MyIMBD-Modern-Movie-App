@@ -71,7 +71,7 @@ private fun MovieListContent(
         topBar = {
             Column {
                 TopAppBar(
-                    title = { Text("Movies") },
+                    title = { Text("MyIMDB") },
                     actions = {
                         IconButton(onClick = onWishlistIconClick) {
                             BadgedBox(

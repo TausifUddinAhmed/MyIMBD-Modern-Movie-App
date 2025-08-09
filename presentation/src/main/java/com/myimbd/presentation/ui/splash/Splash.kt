@@ -63,7 +63,7 @@ fun SplashScreen(
         modifier = Modifier.fillMaxSize()
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(id = R.drawable.mymdb),
             contentDescription = "App Logo",
             modifier = Modifier
                 .size(120.dp)

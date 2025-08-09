@@ -3,7 +3,7 @@
 
     <style name="Theme.MyIMBD" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">#FF191919</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+<!--        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>-->
         <item name="android:statusBarColor">#FF191919</item>
         <item name="android:colorPrimaryDark">#FF191919</item>
         <item name="android:windowActionBar">false</item>
