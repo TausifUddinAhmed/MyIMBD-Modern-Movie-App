@@ -16,7 +16,6 @@ The project follows **Clean Architecture** principles and is organized into the 
 2. **`domain`**  
    - Contains business logic and use cases.
    - Defines repository interfaces.
-   - Platform-agnostic — no Android dependencies.
 
 3. **`data`**  
    - Implements repositories and data sources.
@@ -53,6 +52,7 @@ The project follows **Clean Architecture** principles and is organized into the 
   - Filter movies by genres.  
   - Wishlist icon with badge showing number of items.  
   - Click on a movie item to view details.
+  - Click on the heart icon to the movie item to add to wishlist
 
 - **Movie Details Screen**  
   - Displays detailed information about the selected movie.
@@ -70,6 +70,8 @@ The project follows **Clean Architecture** principles and is organized into the 
 | ![Splash](screenshots/splash.png) | ![Movie List](screenshots/movielist.png) | ![Movie Details](screenshots/movie_details.png) |![Wishlist](screenshots/wishlist.png) |
 
 ---
+## APK
+[![Download Debug APK](https://img.shields.io/badge/Download-APK-blue)](https://github.com/TausifUddinAhmed/MyIMBD-Modern-Movie-App/raw/main/apk/MyIMDB.apk)
 
 ## 🚀 Getting Started
 
@@ -77,16 +79,8 @@ The project follows **Clean Architecture** principles and is organized into the 
 - Latest  Android Studio Narwhal Feature Drop
 - JDK 11 or higher
 - Gradle 8.x
-
-### APK
-[![Download Debug APK](https://img.shields.io/badge/Download-APK-blue)](https://github.com/TausifUddinAhmed/MyIMBD-Modern-Movie-App/raw/main/apk/MyIMDB.apk)
-
 ### Setup
-1. Clone the repository:
+Clone the repository:
    ```bash
    git clone https://github.com/TausifUddinAhmed/MyIMBD-Modern-Movie-App.git
    cd MyIMBD-Modern-Movie-App
-
-
-
-
