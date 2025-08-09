@@ -78,10 +78,15 @@ The project follows **Clean Architecture** principles and is organized into the 
 - JDK 11 or higher
 - Gradle 8.x
 
+### APK
+[![Download Debug APK](https://img.shields.io/badge/Download-APK-blue)](https://github.com/TausifUddinAhmed/MyIMBD-Modern-Movie-App/raw/main/apk/MyIMDB.apk)
+
 ### Setup
 1. Clone the repository:
    ```bash
    git clone https://github.com/TausifUddinAhmed/MyIMBD-Modern-Movie-App.git
    cd MyIMBD-Modern-Movie-App
+
+
 
 
