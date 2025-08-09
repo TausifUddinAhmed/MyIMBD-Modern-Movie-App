@@ -1,6 +1,13 @@
 package com.myimbd.presentation.ui.splash
 
 
+import android.Manifest
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET
+import android.widget.Toast
+import androidx.annotation.RequiresPermission
 import androidx.compose.animation.core.EaseOutBack
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -14,6 +21,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.myimbd.presentation.R
@@ -26,6 +34,7 @@ fun SplashScreen(
     viewModel: SplashViewModel = hiltViewModel()
 ) {
     var startAnimation by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
 
 
@@ -37,7 +46,13 @@ fun SplashScreen(
     // Once decision is known, either fetch or go ahead
     LaunchedEffect(viewModel.shouldFetchDataFromRemote) {
         if (viewModel.shouldFetchDataFromRemote) {
-            viewModel.loadMovies()
+            if (isNetworkAvailable(context)) {
+                viewModel.loadMovies()
+            } else {
+                Toast
+                    .makeText(context, "No Internet Connection", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
 
@@ -88,4 +103,12 @@ fun SplashScreen(
             else -> Unit
         }
     }
+}
+
+@RequiresPermission(Manifest.permission.ACCESS_NETWORK_STATE)
+fun isNetworkAvailable(context: Context): Boolean {
+    val connectivityManager = context.getSystemService(ConnectivityManager::class.java)
+    val network = connectivityManager.activeNetwork ?: return false
+    val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+    return capabilities.hasCapability(NET_CAPABILITY_INTERNET)
 }
