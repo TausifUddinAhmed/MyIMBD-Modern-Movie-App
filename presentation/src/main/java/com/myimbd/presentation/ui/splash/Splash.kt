@@ -2,6 +2,7 @@ package com.myimbd.presentation.ui.splash
 
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
@@ -28,6 +29,7 @@ import com.myimbd.presentation.R
 import dev.olshevski.navigation.reimagined.hilt.hiltViewModel
 import kotlinx.coroutines.delay
 
+@SuppressLint("MissingPermission")
 @Composable
 fun SplashScreen(
     onSuccess: () -> Unit,
@@ -44,7 +46,9 @@ fun SplashScreen(
     }
 
     // Once decision is known, either fetch or go ahead
-    LaunchedEffect(viewModel.shouldFetchDataFromRemote) {
+    LaunchedEffect(viewModel.shouldFetchDataFromRemote) @androidx.annotation.RequiresPermission(
+        android.Manifest.permission.ACCESS_NETWORK_STATE
+    ) {
         if (viewModel.shouldFetchDataFromRemote) {
             if (isNetworkAvailable(context)) {
                 viewModel.loadMovies()
@@ -62,7 +66,7 @@ fun SplashScreen(
     // When success, give the animation a moment then go
     LaunchedEffect(state) {
         if (state is SplashViewModel.SplashUiState.Success) {
-            delay(300) // tiny buffer so the scale finishes nicely
+            delay(300)
             onSuccess()
         }
     }
