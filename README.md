@@ -65,22 +65,16 @@ The project follows **Clean Architecture** principles and is organized into the 
 
 ## 📸 Screenshots
 
-|  Splash| Movie List | Movie Details |
-|------------|----------------|---------------|
-| ![Splash](screenshots/splash.png) | ![Movie List](screenshots/movielist.png) | ![Movie Details](screenshots/movie_details.png) |
-
-| Wishlist |
-|----------|
-| ![Wishlist](screenshots/wishlist.png) |
-
-> **Note:** Place your actual screenshots in a `screenshots` folder at the root of the project.
+|  Splash| Movie List | Movie Details | Wishlist |
+|------------|----------------|---------------|----------|
+| ![Splash](screenshots/splash.png) | ![Movie List](screenshots/movielist.png) | ![Movie Details](screenshots/movie_details.png) |![Wishlist](screenshots/wishlist.png) |
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Android Studio Giraffe or newer
+-  Latesr  Android Studio Narwhal Feature Drop
 - JDK 11 or higher
 - Gradle 8.x
 
@@ -89,3 +83,4 @@ The project follows **Clean Architecture** principles and is organized into the 
    ```bash
    git clone https://github.com/yourusername/MyIMBD.git
    cd MyIMBD
+
