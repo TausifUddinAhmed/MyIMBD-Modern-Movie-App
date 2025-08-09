@@ -55,7 +55,7 @@ private fun MovieListContent(
     onWishlistClick: (Movie) -> Unit,
     onWishlistIconClick: () -> Unit
 ) {
-    // UI state (local to screen; can be hoisted to VM if you want to persist across config)
+    // UI state
     var searchQuery by remember { mutableStateOf("") }
     var selectedGenre by remember { mutableStateOf<String?>(null) }
 

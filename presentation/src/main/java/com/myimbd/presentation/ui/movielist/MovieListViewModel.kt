@@ -18,7 +18,7 @@ class MovieListViewModel @Inject constructor(
     private val repo: MovieListRepository
 ) : ViewModel() {
 
-    // Stream paginated movies from Room; cache in VM scope for config changes
+    // get paginated movies from Room; cache in VM scope for config changes
     val movies: Flow<PagingData<Movie>> = movieListUseCase().cachedIn(viewModelScope)
 
     fun onWishlistClick(movie: Movie) {
