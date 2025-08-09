@@ -9,7 +9,7 @@ import com.myimbd.presentation.R
 
 enum class BottomNavigationItem(val route: Screen, val icon: ImageVector, @StringRes val title: Int) {
 
-    Market(
+    Movie(
         route = Screen.MovieList,
         icon = Icons.AutoMirrored.Filled.MenuBook,
         title = R.string.movies
