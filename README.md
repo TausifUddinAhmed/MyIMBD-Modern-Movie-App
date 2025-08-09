@@ -36,7 +36,7 @@ The project follows **Clean Architecture** principles and is organized into the 
 - **Local Database:** Room
 - **Preferences Storage:** DataStore
 - **Architecture:** Multi-module Clean Architecture (app, domain, data, presentation)
-- **Networking:** Retrofit (if applicable in your project)
+- **Networking:** Retrofit 
 - **Paging:** Paging 3 library
 
 ---
@@ -74,13 +74,14 @@ The project follows **Clean Architecture** principles and is organized into the 
 ## 🚀 Getting Started
 
 ### Prerequisites
--  Latesr  Android Studio Narwhal Feature Drop
+- Latest  Android Studio Narwhal Feature Drop
 - JDK 11 or higher
 - Gradle 8.x
 
 ### Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/MyIMBD.git
-   cd MyIMBD
+   git clone https://github.com/TausifUddinAhmed/MyIMBD-Modern-Movie-App.git
+   cd MyIMBD-Modern-Movie-App
+
 
