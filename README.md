@@ -79,6 +79,9 @@ The project follows **Clean Architecture** principles and is organized into the 
 - Latest  Android Studio Narwhal Feature Drop
 - JDK 11 or higher
 - Gradle 8.x
+### Branch Information
+The `main` branch contains the most up-to-date codebase.  
+Please pull from this branch to get the latest changes.
 ### Setup
 Clone the repository:
    ```bash
