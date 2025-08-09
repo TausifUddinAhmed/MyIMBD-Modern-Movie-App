@@ -27,10 +27,18 @@ fun SplashScreen(
 ) {
     var startAnimation by remember { mutableStateOf(false) }
 
-    // Kick off animation and API call
+
+
+    // Ask the VM to decide once when we enter
     LaunchedEffect(Unit) {
-        startAnimation = true
-        viewModel.loadMovies()
+        viewModel.decideFetch()
+    }
+
+    // Once decision is known, either fetch or go ahead
+    LaunchedEffect(viewModel.shouldFetchDataFromRemote) {
+        if (viewModel.shouldFetchDataFromRemote) {
+            viewModel.loadMovies()
+        }
     }
 
     // Collect state

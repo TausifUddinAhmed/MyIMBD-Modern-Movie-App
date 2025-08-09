@@ -2,12 +2,12 @@ package com.myimbd.domain.features.app
 
 import javax.inject.Inject
 
-class SetPlayStoreReviewAlertShownUseCase @Inject constructor(
+class SetMovieDataStoredShownUseCase @Inject constructor(
     private val repository: AppRepository
 ) {
 
     suspend operator fun invoke() {
-        return repository.setPlayStoreReviewAlertShown()
+        return repository.setMovieDataStored()
     }
 
 }

@@ -13,21 +13,21 @@ class DataStoreAppRepository @Inject constructor(
     private val preferencesDataStore: DataStore<Preferences>
 ) : AppRepository {
 
-    private val isPlayStoreReviewAlertAlreadyShown = booleanPreferencesKey("IS_PLAY_STORE_REVIEW_ALREADY_SHOWN_KEY")
+    private val isMovieDataAlreadyStored = booleanPreferencesKey("IS_MOVIE_DATA_STORED")
 
 
-    override suspend fun isPlayStoreReviewAlertAlreadyShown(): Boolean {
+    override suspend fun isMovieDataAlreadyStored(): Boolean {
         return try {
-            preferencesDataStore.data.first()[isPlayStoreReviewAlertAlreadyShown] ?: false
+            preferencesDataStore.data.first()[isMovieDataAlreadyStored] ?: false
         } catch (e: Exception) {
             Timber.e("isAppFirstLaunch ERROR: $e")
             true
         }
     }
 
-    override suspend fun setPlayStoreReviewAlertShown() {
+    override suspend fun setMovieDataStored() {
         preferencesDataStore.edit {
-            it[isPlayStoreReviewAlertAlreadyShown] = true
+            it[isMovieDataAlreadyStored] = true
         }
     }
 

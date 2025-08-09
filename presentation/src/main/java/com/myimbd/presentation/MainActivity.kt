@@ -47,8 +47,7 @@ import dev.olshevski.navigation.reimagined.rememberNavController
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Platform splash
-        installSplashScreen()
+
         super.onCreate(savedInstanceState)
 
         setContent {

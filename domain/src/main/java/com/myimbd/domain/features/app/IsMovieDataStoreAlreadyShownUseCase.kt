@@ -2,12 +2,12 @@ package com.myimbd.domain.features.app
 
 import javax.inject.Inject
 
-class IsPlayStoreReviewAlertAlreadyShownUseCase @Inject constructor(
+class IsMovieDataStoreAlreadyShownUseCase @Inject constructor(
     private val repository: AppRepository
 ) {
 
     suspend operator fun invoke(): Boolean {
-        return repository.isPlayStoreReviewAlertAlreadyShown()
+        return repository.isMovieDataAlreadyStored()
     }
 
 }
